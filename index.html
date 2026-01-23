@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="no-js">
   <!-- Mirrored from I S Associates PVT LTD.-tw.vercel.app/html/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Jan 2026 04:49:34 GMT -->
   <!-- Added by HTTrack --><meta
@@ -88,7 +88,7 @@
         --color-border: rgba(255, 255, 255, 0.3);
         --color-border-hover: rgba(93, 102, 111, 0.5);
         --color-shadow: rgba(0, 0, 0, 1);
-        --color-overlay: rgba(28, 37, 57, 0.6);
+        --color-overlay: rgba(31, 34, 40, 0.6);
 
         /* Buttons */
         --font-button-size: 16px;
@@ -178,38 +178,105 @@
         }
       }
 
+      /* Our principal */
       .icon-list,
       .sub-list {
         list-style: none;
         padding-left: 0;
+        margin: 0;
       }
 
-      .icon-list li {
+      .icon-list > li {
         display: flex;
         align-items: flex-start;
-        gap: 10px;
-        margin-bottom: 10px;
+        gap: 12px;
+        margin-bottom: 12px;
+        line-height: 1.6;
       }
 
-      .icon-list i {
+      .icon-list > li:last-child {
+        margin-bottom: 0;
+      }
+
+      .icon-list i.fa-check-circle {
         /* color: #1a73e8; */
         margin-top: 4px;
+        flex-shrink: 0;
+        font-size: 1rem;
+      }
+
+      .icon-list > li > span,
+      .icon-list > li > .list-content {
+        flex: 1;
+      }
+
+      .list-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
       }
 
       .sub-list {
         margin-top: 8px;
-        /* padding-left: 30px; */
+        padding-left: 0;
       }
 
       .sub-list li {
         display: flex;
-        /* align-items: flex-start; */
-        gap: 8px;
-        margin-bottom: 6px;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 8px;
+        line-height: 1.6;
       }
 
-      .sub-list i {
-        color: #555;
+      .sub-list li:last-child {
+        margin-bottom: 0;
+      }
+
+      .sub-list i.fa-angle-right {
+        color: #666;
+        margin-top: 4px;
+        flex-shrink: 0;
+        font-size: 0.875rem;
+      }
+
+      .sub-list span {
+        flex: 1;
+      }
+      .button.loading {
+        opacity: 0.6;
+        pointer-events: none;
+        position: relative;
+      }
+
+      .button.loading::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+        border-top-color: transparent;
+        animation: spinner 0.6s linear infinite;
+      }
+
+      @keyframes spinner {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      /* Grayscale hover effect for all images */
+      .content-link img {
+        filter: grayscale(100%);
+        transition: filter 0.3s ease;
+      }
+
+      .content-link:hover img {
+        filter: grayscale(0%);
       }
     </style>
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -367,28 +434,14 @@
                         <li class="nav-item">
                           <a
                             class="menu-link"
-                            href="service-details.html?service=plant-equipment"
+                            href="service-details.html?service=valuation-equipment"
                             >Valuation of Plant & Equipment</a
                           >
                         </li>
                         <li class="nav-item">
                           <a
                             class="menu-link"
-                            href="service-details.html?service=real-estate"
-                            >Business Valuation</a
-                          >
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="menu-link"
-                            href="service-details.html?service=plant-equipment"
-                            >Valuation of Plant & Equipment</a
-                          >
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="menu-link"
-                            href="service-details.html?service=real-estate"
+                            href="service-details.html?service=valuation-estate"
                             >Valuation of Real Estate</a
                           >
                         </li>
@@ -416,7 +469,7 @@
                         <li class="nav-item">
                           <a
                             class="menu-link"
-                            href="service-details.html?service=third-party-inspection"
+                            href="service-details.html?service=third-party"
                             >Third Party Inspection</a
                           >
                         </li>
@@ -697,7 +750,7 @@
                   <li class="nav-item">
                     <a
                       class="menu-link menu-link-main menu-accrodion"
-                      href="blog.html"
+                      href="#appointment"
                     >
                       Enquiry Us
                       <!-- <svg
@@ -877,8 +930,8 @@
                 </svg>
               </div>
               <a
-                href="contact.html"
-                aria-label="contact us"
+                href="#appointment"
+                aria-label="Appointment"
                 class="button button--secondary button--slim !hidden lg:!inline-flex"
               >
                 Appointment
@@ -943,7 +996,7 @@
               srcset="assets/img/slider/b-991.jpg"
             /> -->
             <img
-              src="assets/img/slider/b1.jpg"
+              src="assets/img/slider/hero1.webp"
               width="1920"
               height="1000"
               loading="eager"
@@ -959,7 +1012,8 @@
                   class="subheading text-20 subheading-bg"
                   data-aos="fade-up"
                 >
-                  <svg
+                  <span>Welcome to I S Associates PVT LTD.</span>
+                  <!-- <svg
                     class="icon icon-14"
                     xmlns="http://www.w3.org/2000/svg"
                     width="14"
@@ -978,28 +1032,7 @@
                         <rect width="14" height="14" fill="CurrentColor" />
                       </clipPath>
                     </defs>
-                  </svg>
-                  <span>welcome to I S Associates PVT LTD.</span>
-                  <svg
-                    class="icon icon-14"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                  >
-                    <g clip-path="url(#clip0_9088_4143)">
-                      <path
-                        d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                        fill="CurrentColor"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath>
-                        <rect width="14" height="14" fill="CurrentColor" />
-                      </clipPath>
-                    </defs>
-                  </svg>
+                  </svg> -->
                 </div>
                 <h2
                   class="heading text-90 fw-700"
@@ -1019,11 +1052,11 @@
                 </div>
                 <div class="buttons" data-aos="fade-up" data-aos-delay="300">
                   <a
-                    href="contact.html"
+                    href="#about"
                     class="button button--secondary"
                     aria-label="hero button"
                   >
-                    Free Consultation
+                    Know More
                     <span class="svg-wrapper">
                       <svg
                         class="icon-20"
@@ -1048,13 +1081,13 @@
       </div>
 
       <!-- Brand Logo -->
-      <div class="running-content mt-100">
+      <div class="running-content" id="about">
         <div class="content-inner">
           <div class="content-lists running-animation">
             <div class="content-item">
               <a href="about.html" class="content-link">
                 <img
-                  src="assets/img/brand/b1.png"
+                  src="assets/img/automobile/2.png"
                   width="108"
                   height="36"
                   loading="lazy"
@@ -1063,7 +1096,7 @@
               </a>
               <a href="about.html" class="content-link">
                 <img
-                  src="assets/img/brand/b2.png"
+                  src="assets/img/automobile/4.png"
                   width="108"
                   height="36"
                   loading="lazy"
@@ -1072,7 +1105,7 @@
               </a>
               <a href="about.html" class="content-link">
                 <img
-                  src="assets/img/brand/b3.png"
+                  src="assets/img/automobile/5.png"
                   width="108"
                   height="36"
                   loading="lazy"
@@ -1081,7 +1114,195 @@
               </a>
               <a href="about.html" class="content-link">
                 <img
-                  src="assets/img/brand/b4.png"
+                  src="assets/img/banks/10.png"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/banks/11.png"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+            </div>
+            <div class="content-item">
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/automobile/67.webp"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/banks/14.png"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/banks/22.png"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/banks/47.webp"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/banks/15.png"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+            </div>
+            <div class="content-item">
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/banks/16.png"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/banks/15.png"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/automobile/69.webp"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/automobile/72.webp"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/automobile/70.webp"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+            </div>
+            <div class="content-item">
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/automobile/72.webp"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/automobile/74.webp"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/automobile/76.webp"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/automobile/75.webp"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/automobile/9.png"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+            </div>
+            <div class="content-item">
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/automobile/78.webp"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/automobile/77.webp"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/automobile/72.webp"
+                  width="108"
+                  height="36"
+                  loading="lazy"
+                  alt="Brand Image"
+                />
+              </a>
+              <a href="about.html" class="content-link">
+                <img
+                  src="assets/img/banks/53.webp"
                   width="108"
                   height="36"
                   loading="lazy"
@@ -1110,7 +1331,7 @@
               </a>
               <a href="about.html" class="content-link">
                 <img
-                  src="assets/img/brand/b2.png"
+                  src="assets/img/banks/50.webp"
                   width="108"
                   height="36"
                   loading="lazy"
@@ -1119,7 +1340,7 @@
               </a>
               <a href="about.html" class="content-link">
                 <img
-                  src="assets/img/brand/b3.png"
+                  src="assets/img/banks/49.webp"
                   width="108"
                   height="36"
                   loading="lazy"
@@ -1128,7 +1349,7 @@
               </a>
               <a href="about.html" class="content-link">
                 <img
-                  src="assets/img/brand/b4.png"
+                  src="assets/img/banks/46.webp"
                   width="108"
                   height="36"
                   loading="lazy"
@@ -1137,195 +1358,7 @@
               </a>
               <a href="about.html" class="content-link">
                 <img
-                  src="assets/img/brand/b5.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-            </div>
-            <div class="content-item">
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b1.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b2.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b3.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b4.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b5.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-            </div>
-            <div class="content-item">
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b1.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b2.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b3.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b4.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b5.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-            </div>
-            <div class="content-item">
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b1.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b2.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b3.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b4.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b5.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-            </div>
-            <div class="content-item">
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b1.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b2.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b3.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b4.png"
-                  width="108"
-                  height="36"
-                  loading="lazy"
-                  alt="Brand Image"
-                />
-              </a>
-              <a href="about.html" class="content-link">
-                <img
-                  src="assets/img/brand/b5.png"
+                  src="assets/img/banks/50.webp"
                   width="108"
                   height="36"
                   loading="lazy"
@@ -1338,13 +1371,13 @@
       </div>
 
       <!-- Image Text -->
-      <div class="image-text mt-100">
+      <div class="image-text">
         <div class="container">
           <div class="grid lg:grid-cols-2 lg:gap-1 items-center">
             <div class="lg:col-span-1 col-span-2">
               <div class="media-wrap" data-aos="zoom-in-up">
                 <img
-                  src="assets/img/image-text/img1.png"
+                  src="assets/img/about.webp"
                   width="992"
                   height="863"
                   loading="lazy"
@@ -1358,47 +1391,7 @@
                   class="subheading text-20 subheading-bg"
                   data-aos="fade-up"
                 >
-                  <svg
-                    class="icon icon-14"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                  >
-                    <g clip-path="url(#clip0_9088_4143)">
-                      <path
-                        d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                        fill="CurrentColor"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath>
-                        <rect width="14" height="14" fill="CurrentColor" />
-                      </clipPath>
-                    </defs>
-                  </svg>
                   <span>Our Company</span>
-                  <svg
-                    class="icon icon-14"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                  >
-                    <g clip-path="url(#clip0_9088_4143)">
-                      <path
-                        d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                        fill="CurrentColor"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath>
-                        <rect width="14" height="14" fill="CurrentColor" />
-                      </clipPath>
-                    </defs>
-                  </svg>
                 </div>
                 <h2 class="heading text-50" data-aos="fade-up">Who Are We ?</h2>
                 <div class="text text-18" data-aos="fade-up">
@@ -1555,47 +1548,7 @@
         <div class="container">
           <div class="multicolumn-header section-headings">
             <div class="subheading text-20 subheading-bg" data-aos="fade-up">
-              <svg
-                class="icon icon-14"
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-              >
-                <g clip-path="url(#clip0_9088_4143)">
-                  <path
-                    d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                    fill="CurrentColor"
-                  />
-                </g>
-                <defs>
-                  <clipPath>
-                    <rect width="14" height="14" fill="CurrentColor" />
-                  </clipPath>
-                </defs>
-              </svg>
               <span>Our Services</span>
-              <svg
-                class="icon icon-14"
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-              >
-                <g clip-path="url(#clip0_9088_4143)">
-                  <path
-                    d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                    fill="CurrentColor"
-                  />
-                </g>
-                <defs>
-                  <clipPath>
-                    <rect width="14" height="14" fill="CurrentColor" />
-                  </clipPath>
-                </defs>
-              </svg>
             </div>
             <h2 class="heading text-50" data-aos="fade-up">
               Build clients to grow business
@@ -1609,7 +1562,7 @@
               >
                 <a
                   class="multicolumn-card"
-                  href="service-details.html"
+                  href="service-details.html?service=valuation-equipment"
                   aria-label="View Service Details"
                 >
                   <div class="card-icon">
@@ -1742,7 +1695,7 @@
               >
                 <a
                   class="multicolumn-card"
-                  href="service-details.html"
+                  href="service-details.html?service=valuation-estate"
                   aria-label="View Service Details"
                 >
                   <div class="card-icon">
@@ -1827,7 +1780,7 @@
               >
                 <a
                   class="multicolumn-card"
-                  href="service-details.html"
+                  href="service-details.html?service=ce-certification"
                   aria-label="View Service Details"
                 >
                   <div class="card-icon">
@@ -1911,7 +1864,7 @@
               >
                 <a
                   class="multicolumn-card"
-                  href="service-details.html"
+                  href="service-details.html?service=iso-audit"
                   aria-label="View Service Details"
                 >
                   <div class="card-icon">
@@ -2005,7 +1958,7 @@
               >
                 <a
                   class="multicolumn-card"
-                  href="service-details.html"
+                  href="service-details.html?service=tev-liv"
                   aria-label="View Service Details"
                 >
                   <div class="card-icon">
@@ -2123,7 +2076,7 @@
               >
                 <a
                   class="multicolumn-card"
-                  href="service-details.html"
+                  href="service-details.html?service=third-party"
                   aria-label="View Service Details"
                 >
                   <div class="card-icon">
@@ -2245,47 +2198,7 @@
           <div class="text-banner-inner radius18">
             <div class="section-headings">
               <div class="subheading text-20 subheading-bg" data-aos="fade-up">
-                <svg
-                  class="icon icon-14"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                >
-                  <g clip-path="url(#clip0_9088_4143)">
-                    <path
-                      d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                      fill="CurrentColor"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath>
-                      <rect width="14" height="14" fill="CurrentColor" />
-                    </clipPath>
-                  </defs>
-                </svg>
                 <span>Professional Valuation & Advisory</span>
-                <svg
-                  class="icon icon-14"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                >
-                  <g clip-path="url(#clip0_9088_4143)">
-                    <path
-                      d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                      fill="CurrentColor"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath>
-                      <rect width="14" height="14" fill="CurrentColor" />
-                    </clipPath>
-                  </defs>
-                </svg>
               </div>
               <h2 class="heading text-80" data-aos="fade-up">
                 Trusted Valuation, Audit & Energy Consultancy Experts
@@ -2356,47 +2269,7 @@
                       class="subheading text-20 subheading-bg"
                       data-aos="fade-up"
                     >
-                      <svg
-                        class="icon icon-14"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 14 14"
-                        fill="none"
-                      >
-                        <g clip-path="url(#clip0_9088_4143)">
-                          <path
-                            d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                            fill="CurrentColor"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath>
-                            <rect width="14" height="14" fill="CurrentColor" />
-                          </clipPath>
-                        </defs>
-                      </svg>
                       <span>Valuation Expertise</span>
-                      <svg
-                        class="icon icon-14"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 14 14"
-                        fill="none"
-                      >
-                        <g clip-path="url(#clip0_9088_4143)">
-                          <path
-                            d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                            fill="CurrentColor"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath>
-                            <rect width="14" height="14" fill="CurrentColor" />
-                          </clipPath>
-                        </defs>
-                      </svg>
                     </div>
                     <h2 class="heading text-50" data-aos="fade-up">
                       Accurate Asset Valuation Services
@@ -2438,7 +2311,7 @@
                 <div class="lg:col-span-1 col-span-2">
                   <div class="media-wrap radius18" data-aos="zoom-in-up">
                     <img
-                      src="assets/img/project/1.jpg"
+                      src="assets/img/project/p1.webp"
                       width="1000"
                       height="707"
                       loading="lazy"
@@ -2456,47 +2329,7 @@
                       class="subheading text-20 subheading-bg"
                       data-aos="fade-up"
                     >
-                      <svg
-                        class="icon icon-14"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 14 14"
-                        fill="none"
-                      >
-                        <g clip-path="url(#clip0_9088_4143)">
-                          <path
-                            d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                            fill="CurrentColor"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath>
-                            <rect width="14" height="14" fill="CurrentColor" />
-                          </clipPath>
-                        </defs>
-                      </svg>
                       <span>Audit & Compliance</span>
-                      <svg
-                        class="icon icon-14"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 14 14"
-                        fill="none"
-                      >
-                        <g clip-path="url(#clip0_9088_4143)">
-                          <path
-                            d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                            fill="CurrentColor"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath>
-                            <rect width="14" height="14" fill="CurrentColor" />
-                          </clipPath>
-                        </defs>
-                      </svg>
                     </div>
                     <h2 class="heading text-50" data-aos="fade-up">
                       Professional Audit & Compliance Services
@@ -2538,7 +2371,7 @@
                 <div class="lg:col-span-1 col-span-2">
                   <div class="media-wrap radius18" data-aos="zoom-in-up">
                     <img
-                      src="assets/img/project/2.jpg"
+                      src="assets/img/project/p2.webp"
                       width="1000"
                       height="707"
                       loading="lazy"
@@ -2556,47 +2389,7 @@
                       class="subheading text-20 subheading-bg"
                       data-aos="fade-up"
                     >
-                      <svg
-                        class="icon icon-14"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 14 14"
-                        fill="none"
-                      >
-                        <g clip-path="url(#clip0_9088_4143)">
-                          <path
-                            d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                            fill="CurrentColor"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath>
-                            <rect width="14" height="14" fill="CurrentColor" />
-                          </clipPath>
-                        </defs>
-                      </svg>
                       <span>Energy Management</span>
-                      <svg
-                        class="icon icon-14"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 14 14"
-                        fill="none"
-                      >
-                        <g clip-path="url(#clip0_9088_4143)">
-                          <path
-                            d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                            fill="CurrentColor"
-                          />
-                        </g>
-                        <defs>
-                          <clipPath>
-                            <rect width="14" height="14" fill="CurrentColor" />
-                          </clipPath>
-                        </defs>
-                      </svg>
                     </div>
                     <h2 class="heading text-50" data-aos="fade-up">
                       Optimizing Energy for Sustainable Growth
@@ -2638,7 +2431,7 @@
                 <div class="lg:col-span-1 col-span-2">
                   <div class="media-wrap radius18" data-aos="zoom-in-up">
                     <img
-                      src="assets/img/project/3.jpg"
+                      src="assets/img/project/p3.webp"
                       width="1000"
                       height="707"
                       loading="lazy"
@@ -2660,47 +2453,7 @@
         <div class="container">
           <div class="section-headings headings-width text-center">
             <div class="subheading text-20 subheading-bg" data-aos="fade-up">
-              <svg
-                class="icon icon-14"
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-              >
-                <g clip-path="url(#clip0_9088_4143)">
-                  <path
-                    d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                    fill="CurrentColor"
-                  />
-                </g>
-                <defs>
-                  <clipPath>
-                    <rect width="14" height="14" fill="CurrentColor" />
-                  </clipPath>
-                </defs>
-              </svg>
               <span>Testimonial</span>
-              <svg
-                class="icon icon-14"
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-              >
-                <g clip-path="url(#clip0_9088_4143)">
-                  <path
-                    d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                    fill="CurrentColor"
-                  />
-                </g>
-                <defs>
-                  <clipPath>
-                    <rect width="14" height="14" fill="CurrentColor" />
-                  </clipPath>
-                </defs>
-              </svg>
             </div>
             <h2 class="heading text-50" data-aos="fade-up">
               See what our customers have to say about us
@@ -3107,47 +2860,7 @@
         <div class="container">
           <div class="section-headings text-center">
             <div class="subheading subheading-bg text-20" data-aos="fade-up">
-              <svg
-                class="icon icon-14"
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-              >
-                <g clip-path="url(#clip0_9088_4143)">
-                  <path
-                    d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                    fill="CurrentColor"
-                  />
-                </g>
-                <defs>
-                  <clipPath>
-                    <rect width="14" height="14" fill="CurrentColor" />
-                  </clipPath>
-                </defs>
-              </svg>
               <span>Our Blog</span>
-              <svg
-                class="icon icon-14"
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-              >
-                <g clip-path="url(#clip0_9088_4143)">
-                  <path
-                    d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                    fill="CurrentColor"
-                  />
-                </g>
-                <defs>
-                  <clipPath>
-                    <rect width="14" height="14" fill="CurrentColor" />
-                  </clipPath>
-                </defs>
-              </svg>
             </div>
             <h2 class="heading text-50" data-aos="fade-up" data-aos-delay="50">
               Latest News From Us
@@ -3387,7 +3100,10 @@
       </div>
 
       <!-- Contact Form -->
-      <div class="section-contact-form without-box-shadow section-padding">
+      <div
+        class="section-contact-form without-box-shadow section-padding"
+        id="appointment"
+      >
         <div class="container">
           <div class="contact-box radius18">
             <div
@@ -3401,148 +3117,167 @@
                     class="subheading text-20 subheading-bg"
                     data-aos="fade-up"
                   >
-                    <svg
-                      class="icon icon-14"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                    >
-                      <g clip-path="url(#clip0_9088_4143)">
-                        <path
-                          d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                          fill="CurrentColor"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath>
-                          <rect width="14" height="14" fill="CurrentColor" />
-                        </clipPath>
-                      </defs>
-                    </svg>
                     <span>Our Principles</span>
-                    <svg
-                      class="icon icon-14"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                    >
-                      <g clip-path="url(#clip0_9088_4143)">
-                        <path
-                          d="M8.71401 5.28599C11.7514 5.4205 14 5.9412 14 7C14 8.0588 11.7514 8.5795 8.71401 8.71401C8.5795 11.7514 8.0588 14 7 14C5.9412 14 5.4205 11.7514 5.28599 8.71401C2.2486 8.5795 -1.33117e-07 8.0588 0 7C4.62818e-08 5.94119 2.2486 5.4205 5.28599 5.28599C5.4205 2.2486 5.9412 0 7 0C8.0588 0 8.5795 2.2486 8.71401 5.28599Z"
-                          fill="CurrentColor"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath>
-                          <rect width="14" height="14" fill="CurrentColor" />
-                        </clipPath>
-                      </defs>
-                    </svg>
                   </div>
                   <br /><br /><br />
                   <ul class="icon-list">
                     <li>
-                      <i class="fas fa-check-circle"></i> We adopt the highest
-                      standards of professional integrity, honesty, and
-                      trustworthiness in all relationships.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We adopt the highest standards of professional
+                        integrity, honesty, and trustworthiness in all
+                        relationships.</span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We maintain a strong
-                      commitment to codes of practice, ethics, and professional
-                      principles.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We maintain a strong commitment to codes of practice,
+                        ethics, and professional principles.</span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We follow a
-                      cooperative and constructive professional approach.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We follow a cooperative and constructive professional
+                        approach.</span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> Our working motto is
-                      <strong>“Prompt and Dedicated Services.”</strong>
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >Our working motto is
+                        <strong>"Prompt and Dedicated Services."</strong></span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We believe in
-                      meticulous working practices, take no shortcuts, and
-                      ensure reliable outcomes.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We believe in meticulous working practices, take no
+                        shortcuts, and ensure reliable outcomes.</span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We adopt the latest
-                      and emerging techniques for continuous improvement.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We adopt the latest and emerging techniques for
+                        continuous improvement.</span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We work optimally to
-                      achieve complete customer satisfaction.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We work optimally to achieve complete customer
+                        satisfaction.</span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We offer complete,
-                      personalized professional services and round-the-clock
-                      advisory support.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We offer complete, personalized professional services
+                        and round-the-clock advisory support.</span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We make every possible
-                      effort to deliver the best professional services.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We make every possible effort to deliver the best
+                        professional services.</span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We stand by our
-                      commitments and are prepared to face all internal and
-                      external scrutiny.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We stand by our commitments and are prepared to face
+                        all internal and external scrutiny.</span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We provide impartial,
-                      unbiased, free, and fair second opinions.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We provide impartial, unbiased, free, and fair second
+                        opinions.</span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We believe in
-                      continuous upgradation of:
-                      <ul class="sub-list">
-                        <li><i class="fas fa-angle-right"></i> Data banks</li>
-                        <li>
-                          <i class="fas fa-angle-right"></i> Books and
-                          professional literature related to our fields
-                        </li>
-                        <li>
-                          <i class="fas fa-angle-right"></i> Working methods,
-                          systems, and quality standards
-                        </li>
-                      </ul>
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <div class="list-content">
+                        <span>We believe in continuous upgradation of:</span>
+                        <ul class="sub-list">
+                          <li>
+                            <i
+                              class="fas fa-angle-right"
+                              aria-hidden="true"
+                            ></i>
+                            <span>Data banks</span>
+                          </li>
+                          <li>
+                            <i
+                              class="fas fa-angle-right"
+                              aria-hidden="true"
+                            ></i>
+                            <span
+                              >Books and professional literature related to our
+                              fields</span
+                            >
+                          </li>
+                          <li>
+                            <i
+                              class="fas fa-angle-right"
+                              aria-hidden="true"
+                            ></i>
+                            <span
+                              >Working methods, systems, and quality
+                              standards</span
+                            >
+                          </li>
+                        </ul>
+                      </div>
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We believe in constant
-                      enrichment of professional knowledge and expertise.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We believe in constant enrichment of professional
+                        knowledge and expertise.</span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We are committed to
-                      accomplishing all tasks in the most scientific and
-                      superior manner.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We are committed to accomplishing all tasks in the most
+                        scientific and superior manner.</span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We focus on speed,
-                      accuracy, and cost-effectiveness.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We focus on speed, accuracy, and
+                        cost-effectiveness.</span
+                      >
                     </li>
 
                     <li>
-                      <i class="fas fa-check-circle"></i> We actively support
-                      continued professional development programs.
+                      <i class="fas fa-check-circle" aria-hidden="true"></i>
+                      <span
+                        >We actively support continued professional development
+                        programs.</span
+                      >
                     </li>
                   </ul>
-
                   <!-- <h2 class="heading text-50" data-aos="fade-up">
                     Let's Build an Awesome Project Together
                   </h2>
@@ -3690,6 +3425,19 @@
                       />
                     </div>
                     <div class="field">
+                      <label for="ContactForm-name" class="visually-hidden">
+                        Mobile Number
+                      </label>
+                      <input
+                        id="ContactForm-name"
+                        class="text text-16"
+                        type="text"
+                        placeholder="Mobile Number *"
+                        name="Mobile Number"
+                        required
+                      />
+                    </div>
+                    <div class="field">
                       <label for="ContactForm-email" class="visually-hidden">
                         Email Here
                       </label>
@@ -3833,23 +3581,25 @@
                     <li>
                       <a
                         class="social-link text"
-                        href="https://www.linkedin.com/"
+                        href="https://www.whatsapp.com/"
+                        target="_blank"
+                        aria-label="WhatsApp"
                       >
                         <svg
-                          width="17"
-                          height="16"
-                          viewBox="0 0 17 16"
-                          fill="none"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            d="M3.78357 2.16742C3.78326 2.84601 3.37157 3.45666 2.74262 3.71142C2.11367 3.96619 1.39306 3.81419 0.920587 3.32711C0.448112 2.84001 0.318129 2.11511 0.59192 1.49421C0.86572 0.873305 1.48862 0.480397 2.1669 0.500755C3.0678 0.527797 3.78398 1.26612 3.78357 2.16742ZM3.83357 5.06742H0.500237V15.5007H3.83357V5.06742ZM9.10025 5.06742H5.78357V15.5007H9.06692V10.0257C9.06692 6.97573 13.0419 6.6924 13.0419 10.0257V15.5007H16.3336V8.8924C16.3336 3.75075 10.4503 3.94242 9.06692 6.4674L9.10025 5.06742Z"
-                            fill="currentColor"
+                            d="M12.04 2C6.58 2 2.16 6.42 2.16 11.88c0 2.1.55 4.05 1.6 5.78L2 22l4.5-1.18a9.87 9.87 0 005.54 1.62c5.46 0 9.88-4.42 9.88-9.88C21.92 6.42 17.5 2 12.04 2zm0 17.98a8.02 8.02 0 01-4.09-1.12l-.29-.17-2.67.7.72-2.6-.19-.27a8.02 8.02 0 1115.24-4.64c0 4.43-3.6 8.1-8.12 8.1zm4.52-5.96c-.25-.12-1.47-.73-1.7-.81-.23-.08-.4-.12-.57.12-.17.25-.65.81-.8.98-.15.17-.3.19-.55.06-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.39-1.73-.15-.25-.02-.38.1-.5.11-.11.25-.3.38-.45.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.12-.57-1.38-.78-1.89-.21-.5-.42-.43-.57-.43-.15 0-.32-.02-.5-.02s-.45.06-.68.32c-.23.25-.9.88-.9 2.15 0 1.27.92 2.5 1.05 2.67.12.17 1.82 2.8 4.42 3.93.62.27 1.1.43 1.48.55.62.2 1.18.17 1.63.1.5-.07 1.47-.6 1.68-1.18.21-.57.21-1.06.15-1.18-.06-.12-.23-.19-.48-.31z"
                           />
                         </svg>
-                        <span class="visually-hidden">Linkedin</span>
+                        <span class="visually-hidden">WhatsApp</span>
                       </a>
                     </li>
+
                     <li>
                       <a class="social-link text" href="https://x.com/">
                         <svg
@@ -3900,7 +3650,7 @@
                   <ul class="footer-menu list-unstyled">
                     <li>
                       <a
-                        href="about.html"
+                        href="index.html"
                         class="text text-16 link"
                         aria-label="About Us"
                       >
@@ -3909,7 +3659,7 @@
                     </li>
                     <li>
                       <a
-                        href="team.html"
+                        href="index.html#about"
                         class="text text-16 link"
                         aria-label="Our Team"
                       >
@@ -3918,7 +3668,7 @@
                     </li>
                     <li>
                       <a
-                        href="pricing-plan.html"
+                        href="services.html"
                         class="text text-16 link"
                         aria-label="Pricing Plans"
                       >
@@ -3927,7 +3677,7 @@
                     </li>
                     <li>
                       <a
-                        href="blog.html"
+                        href="clients.html"
                         class="text text-16 link"
                         aria-label="Blogs"
                       >
@@ -3936,7 +3686,7 @@
                     </li>
                     <li>
                       <a
-                        href="contact.html"
+                        href="#appointment"
                         class="text text-16 link"
                         aria-label="Blogs"
                       >
@@ -3972,7 +3722,7 @@
                     </li>
                     <li>
                       <a
-                        href="team.html"
+                        href="mailto:info@isassociates.co.in"
                         class="text text-16 link"
                         aria-label="App Development"
                       >
@@ -3981,7 +3731,7 @@
                     </li>
                     <li>
                       <a
-                        href="services.html"
+                        href="mailto:irfanshaikh@gmail.com"
                         class="text text-16 link"
                         aria-label="Digital Marketing"
                       >
@@ -3990,7 +3740,7 @@
                     </li>
                     <li>
                       <a
-                        href="blog.html"
+                        href="mailto:info@isassociates.co.in"
                         class="text text-16 link"
                         aria-label="Web Development"
                         >info@isassociates.co.in</a
@@ -3998,7 +3748,7 @@
                     </li>
                     <li>
                       <a
-                        href="contact.html"
+                        href="tel:+919825062123"
                         class="text text-16 link"
                         aria-label="Cyber Security"
                       >
@@ -4007,7 +3757,7 @@
                     </li>
                     <li>
                       <a
-                        href="contact.html"
+                        href="tel:+919978621233"
                         class="text text-16 link"
                         aria-label="Cyber Security"
                       >
@@ -4016,7 +3766,7 @@
                     </li>
                     <li>
                       <a
-                        href="contact.html"
+                        href="tel:+912652344850"
                         class="text text-16 link"
                         aria-label="Cyber Security"
                       >
@@ -4091,8 +3841,7 @@
             <div class="grid grid-cols-2 md:gap-1 footer-bottom-row">
               <div class="col-span-2 md:col-span-1">
                 <div class="footer-copyright text text-16">
-                  Copyright ©<span class="current-year"></span> SpreeThemes. All
-                  rights reserved.
+                  © <span class="current-year"></span> I S ASSOCIATES PVT LTD.
                 </div>
               </div>
               <!-- <div class="col-span-2 md:col-span-1">
@@ -4161,6 +3910,102 @@
     <!-- all js -->
     <script src="assets/js/vendor.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const contactForm = document.querySelector(".contact-form");
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+        contactForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          // Get form values
+          const fullName = document
+            .getElementById("ContactForm-name")
+            .value.trim();
+          const mobileNumber = contactForm
+            .querySelector('input[name="Mobile Number"]')
+            .value.trim();
+          const email = document
+            .getElementById("ContactForm-email")
+            .value.trim();
+          const serviceType = document
+            .getElementById("ContactForm-service")
+            .value.trim();
+          const message = document
+            .getElementById("ContactForm-body")
+            .value.trim();
+
+          // Validation
+          if (
+            !fullName ||
+            !mobileNumber ||
+            !email ||
+            !serviceType ||
+            !message
+          ) {
+            alert("Please fill in all required fields.");
+            return;
+          }
+
+          if (!/^\d{10}$/.test(mobileNumber)) {
+            alert("Please enter a valid 10-digit mobile number.");
+            return;
+          }
+
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            alert("Please enter a valid email address.");
+            return;
+          }
+
+          // Show loader
+          submitBtn.classList.add("loading");
+          submitBtn.disabled = true;
+
+          const data = {
+            emails: ["aadil18122001@gmail.com"],
+            subject: "New Appointment Request",
+            message: `
+          <h3>New Appointment Request</h3>
+          <strong>Name:</strong> ${fullName}<br/>
+          <strong>Mobile:</strong> ${mobileNumber}<br/>
+          <strong>Email:</strong> ${email}<br/>
+          <strong>Service Type:</strong> ${serviceType}<br/>
+          <strong>Message:</strong><br/>
+          <p>${message}</p>
+        `,
+          };
+
+          try {
+            const response = await fetch(
+              "https://mailer-5x4h33dpla-uc.a.run.app/",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+              },
+            );
+
+            if (!response.ok) {
+              throw new Error("Network error");
+            }
+
+            alert(
+              "Thank you for your appointment request! We'll contact you soon.",
+            );
+            contactForm.reset();
+          } catch (error) {
+            console.error(error);
+            alert("Something went wrong. Please try again later.");
+          } finally {
+            // Hide loader
+            submitBtn.classList.remove("loading");
+            submitBtn.disabled = false;
+          }
+        });
+      });
+    </script>
   </body>
 
   <!-- Mirrored from I S Associates PVT LTD.-tw.vercel.app/html/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Jan 2026 04:50:00 GMT -->

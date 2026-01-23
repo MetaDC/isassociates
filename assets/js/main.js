@@ -157,11 +157,10 @@ class ScrollTop extends HTMLElement {
 
         if (distanceToFooterTop < distanceFromFooter) {
           scrollToTopButton.style.transform = "scale(0)";
-          scrollToTopButton.style.bottom = `${
-            footerHeight +
+          scrollToTopButton.style.bottom = `${footerHeight +
             distanceFromFooter -
             (viewportHeight - buttonBottomRelativeToViewport)
-          }px`;
+            }px`;
         } else {
           scrollToTopButton.style.transform = "scale(1)";
           scrollToTopButton.style.bottom = "20px";
