@@ -1096,12 +1096,21 @@ drawer-opener * {
   right: 20px;
   opacity: 0;
   pointer-events: none;
-  -webkit-transition: opacity 0.3s ease-in-out,
+  -webkit-transition:
+    opacity 0.3s ease-in-out,
     -webkit-transform 0.3s ease-in-out;
-  transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-  -o-transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out,
+  transition:
+    opacity 0.3s ease-in-out,
+    -webkit-transform 0.3s ease-in-out;
+  -o-transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out,
     -webkit-transform 0.3s ease-in-out;
   z-index: 10;
   cursor: pointer;
@@ -1640,11 +1649,18 @@ hero-slider {
   opacity: 0;
   -webkit-transform: translate3d(0, 100px, 0);
   transform: translate3d(0, 100px, 0);
-  -webkit-transition-property: opacity, -webkit-transform;
-  transition-property: opacity, -webkit-transform;
+  -webkit-transition-property:
+    opacity,
+    -webkit-transform;
+  transition-property:
+    opacity,
+    -webkit-transform;
   -o-transition-property: opacity, transform;
   transition-property: opacity, transform;
-  transition-property: opacity, transform, -webkit-transform;
+  transition-property:
+    opacity,
+    transform,
+    -webkit-transform;
   -webkit-transition-timing-function: ease;
   -o-transition-timing-function: ease;
   transition-timing-function: ease;
@@ -2712,9 +2728,15 @@ sticky-header[data-sticky-type="always"] {
     min-width: var(--width);
     width: var(--width);
     overflow: hidden;
-    -webkit-transition: width 0.4s ease, min-width 0.4s ease;
-    -o-transition: width 0.4s ease, min-width 0.4s ease;
-    transition: width 0.4s ease, min-width 0.4s ease;
+    -webkit-transition:
+      width 0.4s ease,
+      min-width 0.4s ease;
+    -o-transition:
+      width 0.4s ease,
+      min-width 0.4s ease;
+    transition:
+      width 0.4s ease,
+      min-width 0.4s ease;
   }
   .accordion-horizontal .accordion-li.active {
     width: 100%;
@@ -6259,7 +6281,9 @@ project-slider .swiper-slide {
   transition: -webkit-transform 0.3s;
   -o-transition: transform 0.3s;
   transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
+  transition:
+    transform 0.3s,
+    -webkit-transform 0.3s;
 }
 
 .card-blog:focus .buttons .button,
